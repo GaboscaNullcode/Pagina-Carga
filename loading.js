@@ -10,13 +10,13 @@ overlay.style.cssText = `
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #ffffff;
     z-index: 999;
 `;
 
 const svgImage = document.createElement('img');
 svgImage.id = 'svgImage';
-svgImage.src = 'https://cdn.jsdelivr.net/gh/jasminder/flutter_preloader/preload.svg';
+svgImage.src = 'https://cdn.jsdelivr.net/gh/GaboscaNullcode/Pagina-Carga@main/1.svg';
 svgImage.style.cssText = `
     max-width: 100%;
     max-height: 100%;
