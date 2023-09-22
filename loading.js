@@ -1,4 +1,4 @@
-// Create the overlay
+// Create the overlay and SVG elements
 const overlay = document.createElement('div');
 overlay.id = 'loader';
 overlay.style.cssText = `
@@ -10,47 +10,39 @@ overlay.style.cssText = `
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff; // Modificado a blanco
+    background-color: rgba(255, 255, 255, 0.7);
     z-index: 999;
 `;
 
-// Create the loader using a div element
-const loader = document.createElement('div');
-loader.style.cssText = `
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #000;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 2s linear infinite;
+const svgImage = document.createElement('img');
+svgImage.id = 'svgImage';
+svgImage.src = 'https://cdn.jsdelivr.net/gh/jasminder/flutter_preloader/preload.svg';
+svgImage.style.cssText = `
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 `;
+svgImage.style.display = 'none';
 
-// Append the loader to the overlay
-overlay.appendChild(loader);
-
-// Append the overlay to the body
+// Append the elements to the body
 document.body.appendChild(overlay);
+document.body.appendChild(svgImage);
 
-// Create a style element for the loader animation
-const style = document.createElement('style');
-style.innerHTML = `
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-`;
-
-// Append the style to the head of the document
-document.head.appendChild(style);
-
-// Function to hide the overlay
+// Function to hide the overlay and display the SVG
 function hideOverlay() {
     overlay.style.display = 'none';
+    svgImage.style.display = 'block';
 }
 
 // Add an event listener to hide the overlay when all external JS files are loaded
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(hideOverlay, 100); // Simulate loading external JS files.
+    // Replace the following lines with the actual code that loads your external JS files
+    // For demonstration purposes, we'll use a setTimeout to simulate loading external JS files.
+    setTimeout(hideOverlay, 100); // Replace with your actual loading code.
 });
 
 // Fallback: If all external resources are loaded and the DOMContentLoaded event doesn't fire,
